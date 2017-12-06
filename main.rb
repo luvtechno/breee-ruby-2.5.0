@@ -44,9 +44,9 @@ puts "\n"
 
 sexp = Ripper.sexp(ruby_24)
 pp sexp
-sexp = parser.process(ruby_24)
-pp sexp
-p ruby2ruby.process(sexp.deep_clone)
+# sexp = parser.process(ruby_24)
+# pp sexp
+# p ruby2ruby.process(sexp.deep_clone)
 puts "\n"
 
 puts "== ruby 2.5.0 =="
@@ -59,7 +59,7 @@ puts "\n"
 
 sexp = Ripper.sexp(ruby_25)
 pp sexp
-sexp = parser.process(ruby_25)
-pp sexp
-p ruby2ruby.process(sexp.deep_clone)
+# sexp = parser.process(ruby_25)
+# pp sexp
+# p ruby2ruby.process(sexp.deep_clone)
 puts "\n"
