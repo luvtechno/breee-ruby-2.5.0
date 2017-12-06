@@ -6,28 +6,28 @@ require 'ruby_parser'
 require 'ripper'
 
 ruby_24 = <<ruby
-3.times do
+0.times do
   begin
-    puts "foo"
+    1
   rescue => exception
-    puts "bar"
+    2
   else
-    puts "baz"
+    3
   ensure
-    puts "qux"
+    4
   end
 end
 ruby
 
 ruby_25 = <<ruby
-3.times do
-  puts "foo"
+0.times do
+  1
 rescue => exception
-  puts "bar"
+  2
 else
-  puts "baz"
+  3
 ensure
-  puts "qux"
+  4
 end
 ruby
 
