@@ -9,7 +9,7 @@ require 'pry'
 def breee_body?(sexp)
   raise "Unexpected s-expression: #{sexp}" unless sexp[0] == :bodystmt
 
-  sexp[1..-1].any? do |sub_sexp|
+  sexp[1..-1].compact.any? do |sub_sexp|
     sub_sexp[0] == :rescue || sub_sexp[0] == :else || sub_sexp[0] == :ensure
   end
 end
@@ -42,7 +42,11 @@ ruby_24 = <<ruby
   rescue => exception
     2
   else
-    3
+    begin
+      3.1
+    ensure
+      3.2
+    end
   ensure
     4
   end
