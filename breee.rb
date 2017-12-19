@@ -29,13 +29,15 @@ def find_breee(sexp)
   end
 end
 
+repo_url = ARGV[1] || "https://github.com/wantedly/wantedly/blob/master/"
+
 file_names = Dir.glob('**/*.rb')
 file_names.each do |file_name|
   f = File.open(file_name)
   sexp = Ripper.sexp(f)
   line_nums = find_breee(sexp)
   line_nums.each do |line_num|
-    puts "https://github.com/wantedly/wantedly/blob/master/#{file_name}#L#{line_num}"
+    puts "#{repo_url}#{file_name}#L#{line_num}"
   end
 end
 
