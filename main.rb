@@ -42,11 +42,7 @@ ruby_24 = <<ruby
   rescue => exception
     2
   else
-    begin
-      3.1
-    ensure
-      3.2
-    end
+    3
   ensure
     4
   end
