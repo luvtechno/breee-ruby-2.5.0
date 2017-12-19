@@ -22,11 +22,14 @@ end
 
 def find_breee(sexp)
   case sexp
-  when nil, Symbol, String, Numeric
+  when nil, Symbol, String, Numeric, TrueClass, FalseClass
     []
   when Array
-    if sexp[0] == :begin && breee_body?(sexp[1])
-      line = find_breee_line(sexp[1])
+    if sexp[0] == :do_block
+      sub_sexp = sexp[2][1][0]
+      if sub_sexp[0] == :begin && breee_body?(sub_sexp[1])
+        line = find_breee_line(sub_sexp[1])
+      end
     end
 
     [line, *sexp.map { |sub_sexp| find_breee(sub_sexp) }].compact.flatten
