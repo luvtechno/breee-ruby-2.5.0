@@ -2,7 +2,6 @@ require 'ripper'
 
 def breee_body?(sexp)
   raise "Unexpected s-expression: #{sexp}" unless sexp[0] == :bodystmt
-
   sexp[1..-1].compact.any? do |sub_sexp|
     sub_sexp[0] == :rescue || sub_sexp[0] == :else || sub_sexp[0] == :ensure
   end
@@ -10,8 +9,7 @@ end
 
 def find_breee_line(sexp)
   raise "Unexpected s-expression: #{sexp}" unless sexp[0] == :bodystmt
-
-  (sexp.flatten.find { |e| e.is_a?(Integer) }) - 1
+  (sexp.flatten.find { |e| e.is_a?(Integer) }) - 1  # heuristic
 end
 
 def find_breee(sexp)
@@ -25,7 +23,6 @@ def find_breee(sexp)
         line = find_breee_line(sub_sexp[1])
       end
     end
-
     [line, *sexp.map { |sub_sexp| find_breee(sub_sexp) }].compact.flatten
   else
     raise "Unexpected s-expression: #{sexp}"
