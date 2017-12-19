@@ -1,7 +1,4 @@
-# require 'rubygems'
-# require 'bundler/setup'
 require 'ripper'
-
 
 def breee_body?(sexp)
   raise "Unexpected s-expression: #{sexp}" unless sexp[0] == :bodystmt
@@ -35,10 +32,7 @@ def find_breee(sexp)
   end
 end
 
-
-
-# file_names = Dir.glob('../../wantedly/wantedly/**/*.rb')[0..100]
-file_names = Dir.glob('**/*.rb')[0..100]
+file_names = Dir.glob('**/*.rb')
 file_names.each do |file_name|
   f = File.open(file_name)
   sexp = Ripper.sexp(f)
